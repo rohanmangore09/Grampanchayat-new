@@ -24,11 +24,11 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t rohan531113/Grampanchayat-new:latest .		
+        docker build -t rohan531113/grampanchayat-new:latest .		
 
     - name: Push Docker image
       run: |
-        docker push rohan531113/Grampanchayat-new:latest				
+        docker push rohan531113/grampanchayat-new:latest				
     - name: Deploy to EC2
       uses: appleboy/ssh-action@v0.1.7
       with:
@@ -36,5 +36,5 @@ jobs:
         username: ${{ secrets.SERVER_USER }}	#ubuntu
         key: ${{ secrets.SERVER_SSH_KEY }}		#.pem private key je download kelela
         script: |
-          docker pull rohan531113/Grampanchayat-new:latest			
+          docker pull rohan531113/grampanchayat-new:latest			
           docker-compose -f /home/ubuntu/docker-compose.yml up -d
