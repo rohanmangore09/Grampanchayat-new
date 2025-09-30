@@ -33,10 +33,11 @@ jobs:
     - name: Deploy to EC2
       uses: appleboy/ssh-action@v0.1.7
       with:
-        host: ${{ secrets.SERVER_IP }}          # EC2 instance public IP
+        host: ${{ secrets.SERVER_IP }}          # EC2 public IP
         username: ${{ secrets.SERVER_USER }}    # ubuntu
-        key: ${{ secrets.SERVER_SSH_KEY }}      # pem private key
+        key: ${{ secrets.SERVER_SSH_KEY }}      # .pem private key
         script: |
           cd /home/ubuntu/Grampanchayat-new
           docker-compose pull
-          docker-compose up -d --force-recreate
+          docker-compose down
+          docker-compose up -d
