@@ -37,4 +37,4 @@ jobs:
         key: ${{ secrets.SERVER_SSH_KEY }}		#.pem private key je download kelela
         script: |
           docker pull rohan531113/grampanchayat-new:latest			
-          docker-compose -f /home/ubuntu/docker-compose.yml up -d
+          docker-compose -f /home/ubuntu/Grampanchayat-new/docker-compose.yml up -d
