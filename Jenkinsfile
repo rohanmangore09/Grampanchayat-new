@@ -4,16 +4,14 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/rohanmangore09/Grampanchayat-new.git'
+                git branch: 'main', url: 'https://github.com/<username>/<repo>.git'
             }
         }
 
-        stage('Deploy') {
+        stage('Deploy with Docker Compose') {
             steps {
                 sh '''
-                cd /home/ubuntu/grampanchayat-website || mkdir -p /home/ubuntu/grampanchayat-website
-                cp -r * /home/ubuntu/grampanchayat-website/
-                cd /home/ubuntu/grampanchayat-website
+                cd $WORKSPACE
                 docker compose down || true
                 docker compose up -d --build --remove-orphans
                 '''
