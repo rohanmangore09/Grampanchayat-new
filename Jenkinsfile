@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/rohanmangore09/Grampanchayat-new.git'
+                git 'https://github.com/rohanmangore09/grampanchayat-new.git'
             }
         }
 
